@@ -1,4 +1,6 @@
-/* style.css */
+/* =========================
+   RESET
+========================= */
 
 *{
 margin:0;
@@ -7,19 +9,23 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
-body{
-background:#f4f7ff;
+html,body{
+width:100%;
 overflow-x:hidden;
+background:#f4f7ff;
 color:#111827;
 }
 
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
 height:320px;
 position:relative;
 
-background:url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop')
+background:
+url('https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1600&auto=format&fit=crop')
 center/cover;
 
 display:flex;
@@ -33,9 +39,11 @@ position:absolute;
 inset:0;
 
 background:
-linear-gradient(to bottom,
+linear-gradient(
+to bottom,
 rgba(0,0,0,.2),
-rgba(0,0,0,.8));
+rgba(0,0,0,.82)
+);
 }
 
 .luxora-brand{
@@ -61,11 +69,14 @@ z-index:2;
 .luxora-logo{
 width:38px;
 height:38px;
+
 border-radius:10px;
+object-fit:cover;
 }
 
 .luxora-brand h2{
 font-size:14px;
+font-weight:700;
 color:#fff;
 }
 
@@ -98,6 +109,12 @@ display:flex;
 gap:8px;
 
 margin-top:14px;
+
+overflow-x:auto;
+}
+
+.luxury-badge::-webkit-scrollbar{
+display:none;
 }
 
 .badge-item{
@@ -109,12 +126,16 @@ border-radius:999px;
 
 font-size:10px;
 color:#fff;
+
+white-space:nowrap;
 }
 
-/* SEARCH */
+/* =========================
+   SEARCH
+========================= */
 
 .search-wrapper{
-margin-top:-10px;
+margin-top:-12px;
 position:relative;
 z-index:5;
 }
@@ -165,6 +186,8 @@ padding:0 14px;
 background:#f3f6fb;
 
 border-radius:12px;
+
+font-size:13px;
 }
 
 .search-btn{
@@ -176,18 +199,24 @@ border:none;
 border-radius:14px;
 
 background:
-linear-gradient(135deg,
+linear-gradient(
+135deg,
 #0f172a,
 #1d4ed8,
-#2563eb);
+#2563eb
+);
 
 color:#fff;
 
 font-size:14px;
 font-weight:600;
+
+cursor:pointer;
 }
 
-/* SECTION */
+/* =========================
+   SECTION
+========================= */
 
 .section{
 padding:22px 14px;
@@ -203,20 +232,33 @@ margin-bottom:14px;
 
 .section-header h2{
 font-size:20px;
+font-weight:700;
 }
 
-/* GRID */
+.section-header span{
+font-size:12px;
+font-weight:600;
+color:#2563eb;
+}
+
+/* =========================
+   GRID
+========================= */
 
 .hotel-list{
 display:grid;
 
 grid-template-columns:
-repeat(2,1fr);
+repeat(2,minmax(0,1fr));
 
 gap:12px;
+
+align-items:start;
 }
 
-/* CARD */
+/* =========================
+   CARD
+========================= */
 
 .hotel-card{
 background:#fff;
@@ -227,7 +269,17 @@ overflow:hidden;
 
 box-shadow:
 0 10px 25px rgba(0,0,0,.05);
+
+display:flex;
+flex-direction:column;
+
+width:100%;
+min-width:0;
 }
+
+/* =========================
+   IMAGE
+========================= */
 
 .hotel-image{
 height:180px;
@@ -235,8 +287,6 @@ height:180px;
 position:relative;
 overflow:hidden;
 }
-
-/* SLIDER */
 
 .slider{
 width:100%;
@@ -254,13 +304,28 @@ height:100%;
 object-fit:cover;
 
 opacity:0;
-
-transition:.4s;
+transition:.35s;
 }
 
 .slide.active{
 opacity:1;
 }
+
+.overlay{
+position:absolute;
+inset:0;
+
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,.35),
+transparent
+);
+}
+
+/* =========================
+   SLIDER BUTTON
+========================= */
 
 .nav{
 position:absolute;
@@ -268,14 +333,15 @@ top:50%;
 
 transform:translateY(-50%);
 
-width:30px;
-height:30px;
+width:32px;
+height:32px;
 
 border:none;
+outline:none;
 
 border-radius:50%;
 
-background:rgba(255,255,255,.85);
+background:rgba(255,255,255,.9);
 
 font-size:18px;
 font-weight:700;
@@ -293,35 +359,40 @@ left:10px;
 right:10px;
 }
 
-.overlay{
-position:absolute;
-inset:0;
-
-background:
-linear-gradient(to top,
-rgba(0,0,0,.4),
-transparent);
-}
+/* =========================
+   RATING
+========================= */
 
 .rating{
 position:absolute;
-top:8px;
-left:8px;
+top:10px;
+left:10px;
 
 background:#fff;
 
-padding:4px 10px;
+padding:5px 10px;
 
 border-radius:999px;
 
 font-size:10px;
 font-weight:600;
 
-z-index:5;
+z-index:6;
 }
+
+/* =========================
+   INFO
+========================= */
 
 .hotel-info{
 padding:12px;
+
+display:flex;
+flex-direction:column;
+
+flex:1;
+
+min-width:0;
 }
 
 .hotel-name{
@@ -329,14 +400,22 @@ font-size:16px;
 font-weight:700;
 
 margin-bottom:4px;
+
+line-height:1.3;
+
+word-break:break-word;
 }
 
 .hotel-location{
 font-size:12px;
 color:#777;
 
-margin-bottom:10px;
+margin-bottom:12px;
 }
+
+/* =========================
+   FEATURES
+========================= */
 
 .features{
 display:flex;
@@ -344,71 +423,200 @@ flex-wrap:wrap;
 
 gap:6px;
 
-margin-bottom:12px;
+margin-bottom:14px;
+
+width:100%;
+min-width:0;
 }
 
 .feature{
-padding:5px 8px;
-
 background:#f3f6fb;
+
+padding:6px 9px;
 
 border-radius:8px;
 
 font-size:9px;
+font-weight:500;
+
+line-height:1.2;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+white-space:nowrap;
+
+flex:none;
+
+max-width:100%;
 }
+
+/* =========================
+   BOTTOM
+========================= */
 
 .bottom{
 display:flex;
 justify-content:space-between;
-align-items:center;
-gap:8px;
+align-items:flex-end;
+
+gap:10px;
+
+margin-top:auto;
+
+width:100%;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.price{
+flex:1;
+min-width:0;
 }
 
 .price small{
 font-size:10px;
 color:#777;
+
 display:block;
+
+margin-bottom:2px;
+}
+
+.old-price{
+font-size:11px;
+color:#9ca3af;
+
+text-decoration:line-through;
+
+margin-bottom:2px;
 }
 
 .price strong{
 font-size:20px;
 font-weight:700;
 
+line-height:1;
+
 background:
-linear-gradient(135deg,
+linear-gradient(
+135deg,
 #0f172a,
-#2563eb);
+#2563eb
+);
 
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
+display:block;
+
+margin-bottom:6px;
 }
+
+.discount-badge{
+display:inline-block;
+
+padding:4px 8px;
+
+border-radius:999px;
+
+background:#dc2626;
+
+color:#fff;
+
+font-size:9px;
+font-weight:600;
+}
+
+/* =========================
+   BUTTON
+========================= */
 
 .book-btn{
 width:110px;
 height:42px;
 
 border:none;
+outline:none;
 
 border-radius:14px;
 
 background:
-linear-gradient(135deg,
+linear-gradient(
+135deg,
 #0f172a,
 #1d4ed8,
-#2563eb);
+#2563eb
+);
 
 color:#fff;
 
 font-size:13px;
 font-weight:600;
+
+cursor:pointer;
+
+flex-shrink:0;
 }
 
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px){
 
 .hotel-list{
 grid-template-columns:1fr;
+}
+
+.hotel-image{
+height:210px;
+}
+
+.book-btn{
+width:100px;
+height:40px;
+
+font-size:12px;
+}
+
+.price strong{
+font-size:18px;
+}
+
+.feature{
+font-size:8px;
+padding:5px 8px;
+}
+
+}
+
+@media(max-width:420px){
+
+.hero-content h1{
+font-size:26px;
+}
+
+.hotel-image{
+height:190px;
+}
+
+.bottom{
+gap:8px;
+}
+
+.book-btn{
+width:95px;
+height:38px;
+
+font-size:11px;
+}
+
+.price strong{
+font-size:17px;
 }
 
 }
