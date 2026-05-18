@@ -1,17 +1,21 @@
+<!-- index.html -->
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 
 <meta name="viewport"
 content="width=device-width,
 initial-scale=1.0">
 
-<title>LUXORA | Hotel & Villa Collection</title>
+<title>LUXORA | Hotel & Villa</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
@@ -21,24 +25,20 @@ initial-scale=1.0">
 
 <div class="overlay-dark"></div>
 
-<!-- BRAND -->
-
 <div class="luxora-brand">
 
-<img src="assets/logo.png"
+<img src="https://cdn-icons-png.flaticon.com/512/139/139899.png"
 class="luxora-logo">
 
 <div>
 
 <h2>LUXORA</h2>
 
-<p>Hotel & Villa Collection</p>
+<p>Luxury Hotel Collection</p>
 
 </div>
 
 </div>
-
-<!-- CONTENT -->
 
 <div class="hero-content">
 
@@ -48,21 +48,21 @@ Luxury Hotel & Villa Experience
 
 <p>
 Nikmati pengalaman menginap premium
-dengan hotel dan vila terbaik di Indonesia.
+dengan hotel dan villa terbaik di Indonesia.
 </p>
 
 <div class="luxury-badge">
 
 <div class="badge-item">
-✨ Premium Luxury
+✨ Premium
 </div>
 
 <div class="badge-item">
-🏨 5 Star Hotel
+🏨 Hotel
 </div>
 
 <div class="badge-item">
-🏡 Private Villa
+🏡 Villa
 </div>
 
 </div>
@@ -78,21 +78,7 @@ dengan hotel dan vila terbaik di Indonesia.
 <div class="search-box">
 
 <div class="search-title">
-Cari Hotel / Vila
-</div>
-
-<div class="type-select">
-
-<button class="type-btn active"
-onclick="selectType(this)">
-🏨 Hotel
-</button>
-
-<button class="type-btn"
-onclick="selectType(this)">
-🏡 Vila
-</button>
-
+Cari Hotel / Villa
 </div>
 
 <div class="input-group">
@@ -106,29 +92,6 @@ placeholder="Contoh: Bali">
 
 </div>
 
-<div class="row">
-
-<div class="input-group">
-
-<label>Check-in</label>
-
-<input type="date"
-class="input">
-
-</div>
-
-<div class="input-group">
-
-<label>Tamu</label>
-
-<input type="number"
-class="input"
-placeholder="2">
-
-</div>
-
-</div>
-
 <button class="search-btn"
 onclick="searchHotel()">
 Cari Sekarang
@@ -138,7 +101,7 @@ Cari Sekarang
 
 </section>
 
-<!-- HOTEL LIST -->
+<!-- HOTEL -->
 
 <section class="section">
 
@@ -152,14 +115,35 @@ Cari Sekarang
 
 <div class="hotel-list">
 
-<!-- CARD -->
+<!-- HOTEL 1 -->
 
 <div class="hotel-card"
 data-location="jakarta">
 
 <div class="hotel-image">
 
-<img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1400&auto=format&fit=crop">
+<div class="slider">
+
+<img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1400&auto=format&fit=crop"
+class="slide active">
+
+<img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=1400&auto=format&fit=crop"
+class="slide">
+
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1400&auto=format&fit=crop"
+class="slide">
+
+</div>
+
+<button class="nav prev"
+onclick="changeSlide(this,-1)">
+‹
+</button>
+
+<button class="nav next"
+onclick="changeSlide(this,1)">
+›
+</button>
 
 <div class="overlay"></div>
 
@@ -210,7 +194,7 @@ Breakfast
 </div>
 
 <button class="book-btn"
-onclick="openForm('Grand Palace Hotel')">
+onclick="goToForm('Grand Palace Hotel')">
 Check-in
 </button>
 
@@ -220,14 +204,35 @@ Check-in
 
 </div>
 
-<!-- CARD -->
+<!-- HOTEL 2 -->
 
 <div class="hotel-card"
 data-location="bali">
 
 <div class="hotel-image">
 
-<img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1400&auto=format&fit=crop">
+<div class="slider">
+
+<img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1400&auto=format&fit=crop"
+class="slide active">
+
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop"
+class="slide">
+
+<img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1400&auto=format&fit=crop"
+class="slide">
+
+</div>
+
+<button class="nav prev"
+onclick="changeSlide(this,-1)">
+‹
+</button>
+
+<button class="nav next"
+onclick="changeSlide(this,1)">
+›
+</button>
 
 <div class="overlay"></div>
 
@@ -278,143 +283,7 @@ Gym
 </div>
 
 <button class="book-btn"
-onclick="openForm('Ocean Paradise Resort')">
-Check-in
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD -->
-
-<div class="hotel-card"
-data-location="bogor">
-
-<div class="hotel-image">
-
-<img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1400&auto=format&fit=crop">
-
-<div class="overlay"></div>
-
-<div class="rating">
-⭐ 4.9
-</div>
-
-</div>
-
-<div class="hotel-info">
-
-<div class="hotel-name">
-Mountain Private Villa
-</div>
-
-<div class="hotel-location">
-📍 Bogor
-</div>
-
-<div class="features">
-
-<div class="feature">
-Private Pool
-</div>
-
-<div class="feature">
-BBQ Area
-</div>
-
-<div class="feature">
-Mountain View
-</div>
-
-<div class="feature">
-WiFi
-</div>
-
-</div>
-
-<div class="bottom">
-
-<div class="price">
-
-<small>Mulai dari</small>
-
-<strong>Rp3.2JT</strong>
-
-</div>
-
-<button class="book-btn"
-onclick="openForm('Mountain Private Villa')">
-Check-in
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- CARD -->
-
-<div class="hotel-card"
-data-location="lombok">
-
-<div class="hotel-image">
-
-<img src="https://images.unsplash.com/photo-1570213489059-0aac6626cade?q=80&w=1400&auto=format&fit=crop">
-
-<div class="overlay"></div>
-
-<div class="rating">
-⭐ 4.8
-</div>
-
-</div>
-
-<div class="hotel-info">
-
-<div class="hotel-name">
-Sunset Beach Villa
-</div>
-
-<div class="hotel-location">
-📍 Lombok
-</div>
-
-<div class="features">
-
-<div class="feature">
-Beach Access
-</div>
-
-<div class="feature">
-Infinity Pool
-</div>
-
-<div class="feature">
-Kitchen
-</div>
-
-<div class="feature">
-Smart TV
-</div>
-
-</div>
-
-<div class="bottom">
-
-<div class="price">
-
-<small>Mulai dari</small>
-
-<strong>Rp4.5JT</strong>
-
-</div>
-
-<button class="book-btn"
-onclick="openForm('Sunset Beach Villa')">
+onclick="goToForm('Ocean Paradise Resort')">
 Check-in
 </button>
 
@@ -427,74 +296,6 @@ Check-in
 </div>
 
 </section>
-
-<!-- FORM -->
-
-<div class="form-page"
-id="formPage">
-
-<div class="form-box">
-
-<h2>Check-in Reservation</h2>
-
-<p id="selectedHotel">
-Hotel dipilih
-</p>
-
-<input type="text"
-class="form-input"
-placeholder="Nama Lengkap">
-
-<input type="number"
-class="form-input"
-placeholder="Nomor HP">
-
-<input type="email"
-class="form-input"
-placeholder="Alamat Email">
-
-<input type="number"
-class="form-input"
-placeholder="Jumlah Tamu">
-
-<input type="date"
-class="form-input">
-
-<button class="submit-btn"
-onclick="submitCheckin()">
-Konfirmasi Check-in
-</button>
-
-</div>
-
-</div>
-
-<!-- SUCCESS -->
-
-<div class="popup"
-id="popup">
-
-<div class="popup-box">
-
-<div class="success-icon">
-✓
-</div>
-
-<h2>Berhasil</h2>
-
-<p>
-Check-in berhasil dilakukan.
-Selamat menikmati pengalaman menginap premium Anda.
-</p>
-
-<button class="done-btn"
-onclick="closePopup()">
-Selesai
-</button>
-
-</div>
-
-</div>
 
 <script src="script.js"></script>
 
