@@ -72,16 +72,17 @@ slides[current]
 
 }
 
-/* PINDAH FORM */
+// PINDAH KE FORM
 
-function goToForm(hotel){
+function goToForm(name,location,price,image){
 
-localStorage.setItem(
-'selectedHotel',
-hotel
-);
+const url =
+`form.html
+?name=${encodeURIComponent(name)}
+&location=${encodeURIComponent(location)}
+&price=${encodeURIComponent(price)}
+&image=${encodeURIComponent(image)}`;
 
-window.location.href =
-'form.html';
+window.location.href = url;
 
 }
