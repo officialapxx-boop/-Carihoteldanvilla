@@ -1,26 +1,17 @@
-function selectType(button){
-
-document.querySelectorAll('.type-btn')
-.forEach(btn=>{
-btn.classList.remove('active');
-});
-
-button.classList.add('active');
-
-}
+// script.js
 
 function searchHotel(){
 
-let input=
+let input =
 document.getElementById('searchInput')
 .value.toLowerCase();
 
-let cards=
+let cards =
 document.querySelectorAll('.hotel-card');
 
 cards.forEach(card=>{
 
-let location=
+let location =
 card.getAttribute('data-location');
 
 if(location.includes(input) || input===""){
@@ -37,30 +28,60 @@ card.style.display='none';
 
 }
 
-function openForm(hotel){
+/* SLIDER */
 
-document.getElementById('formPage')
-.style.display='flex';
+function changeSlide(button,direction){
 
-document.getElementById('selectedHotel')
-.innerHTML=
-'Anda memilih <b>'+hotel+'</b>';
+const hotelImage =
+button.parentElement;
+
+const slides =
+hotelImage.querySelectorAll('.slide');
+
+let current = 0;
+
+slides.forEach((slide,index)=>{
+
+if(slide.classList.contains('active')){
+
+current = index;
 
 }
 
-function submitCheckin(){
+});
 
-document.getElementById('formPage')
-.style.display='none';
+slides[current]
+.classList.remove('active');
 
-document.getElementById('popup')
-.style.display='flex';
+current += direction;
+
+if(current >= slides.length){
+
+current = 0;
 
 }
 
-function closePopup(){
+if(current < 0){
 
-document.getElementById('popup')
-.style.display='none';
+current = slides.length - 1;
+
+}
+
+slides[current]
+.classList.add('active');
+
+}
+
+/* PINDAH FORM */
+
+function goToForm(hotel){
+
+localStorage.setItem(
+'selectedHotel',
+hotel
+);
+
+window.location.href =
+'form.html';
 
 }
