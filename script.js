@@ -74,13 +74,15 @@ slides[current]
 
 // PINDAH KE FORM
 
-function goToForm(name,location,price,image){
+function goToForm(name,location,price,oldprice,discount,image){
 
 const url =
 `form.html
 ?name=${encodeURIComponent(name)}
 &location=${encodeURIComponent(location)}
 &price=${encodeURIComponent(price)}
+&oldprice=${encodeURIComponent(oldprice)}
+&discount=${encodeURIComponent(discount)}
 &image=${encodeURIComponent(image)}`;
 
 window.location.href = url;
