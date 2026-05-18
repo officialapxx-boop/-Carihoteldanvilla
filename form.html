@@ -1,0 +1,245 @@
+<!-- form.html -->
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0">
+
+<title>LUXORA | Reservation Form</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="form.css">
+
+</head>
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="bg-overlay"></div>
+
+<!-- TOPBAR -->
+
+<header class="topbar">
+
+<a href="index.html"
+class="back-btn">
+
+←
+
+</a>
+
+<div class="luxora-brand">
+
+<img src="logo.png"
+class="luxora-logo">
+
+<div>
+
+<h2>LUXORA</h2>
+
+<p>Luxury Hotel & Villa</p>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- FORM SECTION -->
+
+<section class="form-section">
+
+<div class="form-card">
+
+<!-- HOTEL PREVIEW -->
+
+<div class="hotel-preview">
+
+<img id="hotelImage">
+
+<div class="hotel-overlay"></div>
+
+<div class="hotel-info">
+
+<span class="hotel-badge">
+Premium Resort
+</span>
+
+<h1 id="hotelName">
+Hotel Name
+</h1>
+
+<p id="hotelLocation">
+📍 Location
+</p>
+
+</div>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="form-content">
+
+<h2>
+Reservation Form
+</h2>
+
+<p class="desc">
+
+Lengkapi data reservasi Anda
+untuk menikmati pengalaman
+menginap premium bersama Luxora.
+
+</p>
+
+<!-- INPUT -->
+
+<div class="input-group">
+
+<label>Nama Lengkap</label>
+
+<input type="text"
+placeholder="Masukkan nama lengkap">
+
+</div>
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Nomor HP</label>
+
+<input type="number"
+placeholder="08xxxx">
+
+</div>
+
+<div class="input-group">
+
+<label>Jumlah Tamu</label>
+
+<input type="number"
+placeholder="2">
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="input-group">
+
+<label>Check-in</label>
+
+<input type="date">
+
+</div>
+
+<div class="input-group">
+
+<label>Check-out</label>
+
+<input type="date">
+
+</div>
+
+</div>
+
+<div class="input-group">
+
+<label>Email</label>
+
+<input type="email"
+placeholder="email@gmail.com">
+
+</div>
+
+<div class="input-group">
+
+<label>Permintaan Tambahan</label>
+
+<textarea
+placeholder="Contoh: dekor honeymoon, extra bed, dll"></textarea>
+
+</div>
+
+<!-- PRICE -->
+
+<div class="price-box">
+
+<div>
+
+<small>Total Pembayaran</small>
+
+<h3 id="hotelPrice">
+Rp0
+</h3>
+
+</div>
+
+<span class="discount">
+50% OFF
+</span>
+
+</div>
+
+<!-- BUTTON -->
+
+<button class="submit-btn"
+onclick="submitForm()">
+
+Konfirmasi Reservasi
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SUCCESS POPUP -->
+
+<div class="popup"
+id="popup">
+
+<div class="popup-box">
+
+<div class="success-icon">
+
+✓
+
+</div>
+
+<h2>
+Reservasi Berhasil
+</h2>
+
+<p>
+
+Reservasi Anda berhasil dikirim.
+Silahkan tunggu konfirmasi dari pihak hotel Luxora.
+
+</p>
+
+<button onclick="closePopup()">
+
+Selesai
+
+</button>
+
+</div>
+
+</div>
+
+<script src="form.js"></script>
+
+</body>
+</html>
