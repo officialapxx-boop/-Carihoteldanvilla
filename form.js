@@ -14,6 +14,12 @@ params.get("location");
 const hotelPrice =
 params.get("price");
 
+const hotelPrice =
+params.get("oldprice");
+
+const hotelPrice =
+params.get("discount");
+
 const hotelImage =
 params.get("image");
 
@@ -30,6 +36,14 @@ document.getElementById("hotelLocation")
 document.getElementById("hotelPrice")
 .innerText =
 hotelPrice || "Rp0";
+
+document.getElementById("hotelOldPrice")
+.innerText =
+hotelOldPrice || "Rp0";
+
+document.getElementById("hotelDiscount")
+.innerText =
+hotelDiscount || "0% OFF";
 
 document.getElementById("hotelImage")
 .src =
