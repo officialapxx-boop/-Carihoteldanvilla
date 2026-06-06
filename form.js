@@ -1,4 +1,57 @@
 /* ========================= */
+/* AMBIL DATA DARI INDEX */
+/* ========================= */
+const params = new URLSearchParams(window.location.search);
+
+const data = {
+name: params.get("name") || "-",
+location: params.get("location") || "-",
+price: params.get("price") || "-",
+oldprice: params.get("oldprice") || "-",
+discount: params.get("discount") || "-",
+rating: params.get("rating") || "-",
+reviews: params.get("reviews") || "-",
+image: params.get("image") || "",
+facilities: params.get("facilities") || "-"
+};
+
+/* ========================= */
+/* LOAD DATA KE UI */
+/* ========================= */
+window.addEventListener("DOMContentLoaded", () => {
+
+if(document.getElementById("hotelName")){
+document.getElementById("hotelName").innerText = data.name;
+}
+
+if(document.getElementById("hotelPrice")){
+document.getElementById("hotelPrice").innerText = data.price;
+}
+
+if(document.getElementById("hotelImage")){
+document.getElementById("hotelImage").src = data.image;
+}
+
+if(document.getElementById("hotelLocation")){
+document.getElementById("hotelLocation").innerText = data.location;
+}
+
+/* RENDER FASILITAS */
+if(document.getElementById("facilities") && data.facilities){
+let list = data.facilities.split(",");
+let container = document.getElementById("facilities");
+
+list.forEach(item => {
+let span = document.createElement("span");
+span.className = "tag";
+span.innerText = item.trim();
+container.appendChild(span);
+});
+}
+
+});
+
+/* ========================= */
 /* STEP FORM */
 /* ========================= */
 const steps = document.querySelectorAll(".step");
@@ -55,11 +108,15 @@ let checkout = formatTanggal(tanggal[1].value);
 let tamu = document.querySelector("input[placeholder='Jumlah tamu']").value;
 let request = document.querySelector("textarea").value;
 
-let hotel = document.getElementById("hotelName").innerText;
-let harga = document.getElementById("hotelPrice").innerText;
+/* AMBIL DARI DATA INDEX */
+let hotel = data.name;
+let harga = data.price;
+let lokasi = data.location;
+let rating = data.rating;
+let fasilitas = data.facilities;
 
-/* VALIDASI SEDERHANA */
-if(!nama || !hp || !checkin || !checkout){
+/* VALIDASI */
+if(!nama || !hp || checkin === "-" || checkout === "-"){
 alert("Lengkapi data dulu bro 😅");
 return;
 }
@@ -70,6 +127,9 @@ let pesan = `Halo Admin Luxora 👋
 Saya ingin melakukan reservasi dengan detail berikut:
 
 🏨 Hotel: ${hotel}
+📍 Lokasi: ${lokasi}
+⭐ Rating: ${rating}
+
 💰 Harga: ${harga}
 
 📅 Check-in: ${checkin}
@@ -80,6 +140,9 @@ Saya ingin melakukan reservasi dengan detail berikut:
 📧 Email: ${email}
 
 👥 Jumlah Tamu: ${tamu || '-'}
+
+🏷️ Fasilitas:
+${fasilitas}
 
 📝 Permintaan Tambahan:
 ${request || '-'}
@@ -119,7 +182,7 @@ notif.className = "fomo";
 
 let randomName = names[Math.floor(Math.random()*names.length)];
 
-notif.innerText = `${randomName} baru saja booking villa ini 🔥`;
+notif.innerText = `${randomName} baru saja booking ${data.name} 🔥`;
 
 document.body.appendChild(notif);
 
