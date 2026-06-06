@@ -6,105 +6,101 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0f172a,#2563eb);
-color:#111;
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#3b82f6);
+color:#fff;
+overflow-x:hidden;
 }
 
 /* HEADER */
 .topbar{
 display:flex;
-justify-content:space-between;
 align-items:center;
+gap:10px;
 padding:16px;
-color:#fff;
 }
 
-.back-btn{
-width:38px;
-height:38px;
+.back{
+width:36px;
+height:36px;
 background:rgba(255,255,255,.2);
 border-radius:10px;
 display:flex;
 align-items:center;
 justify-content:center;
-text-decoration:none;
 color:#fff;
+text-decoration:none;
 }
 
-.brand{
-display:flex;
-align-items:center;
-gap:8px;
-font-weight:600;
+/* WRAPPER */
+.wrapper{
+padding:14px;
+animation:fadeUp .6s ease;
 }
 
-.brand img{
-width:30px;
-border-radius:8px;
-}
-
-/* CONTAINER */
-.container{
-padding:12px;
-}
-
-/* HOTEL CARD */
-.hotel-card{
+/* HOTEL */
+.hotel{
 position:relative;
-height:140px;
+height:150px;
 border-radius:20px;
 overflow:hidden;
 margin-bottom:14px;
 }
 
-.hotel-card img{
+.hotel img{
 width:100%;
 height:100%;
 object-fit:cover;
 }
 
-.hotel-info{
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.8),transparent);
+}
+
+.hotel-text{
 position:absolute;
 bottom:10px;
 left:12px;
-color:#fff;
 }
 
-.hotel-info h2{
+.hotel-text h1{
 font-size:18px;
 }
 
-.hotel-info p{
+.hotel-text p{
 font-size:12px;
+opacity:.8;
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(20px);
+border-radius:22px;
+padding:16px;
 }
 
 /* FORM */
-.form-box{
-background:#fff;
-border-radius:24px;
-padding:16px;
-box-shadow:0 15px 40px rgba(0,0,0,.2);
-}
-
-.form-box h3{
-font-size:18px;
-margin-bottom:12px;
-}
-
 .form input,
 .form textarea{
 width:100%;
+background:rgba(255,255,255,.15);
 border:none;
-background:#f1f5f9;
 padding:10px;
 border-radius:10px;
-font-size:12px;
+color:#fff;
 margin-bottom:10px;
+font-size:12px;
+}
+
+.form input::placeholder,
+textarea::placeholder{
+color:#cbd5f5;
 }
 
 textarea{
 height:60px;
-resize:none;
 }
 
 /* ROW */
@@ -113,41 +109,33 @@ display:flex;
 gap:8px;
 }
 
-.row input{
-flex:1;
-}
-
 /* PRICE */
-.price-box{
+.price{
 display:flex;
 justify-content:space-between;
 align-items:center;
-background:linear-gradient(135deg,#0f172a,#2563eb);
-color:#fff;
-padding:12px;
-border-radius:16px;
 margin-top:10px;
 }
 
-.price-box small{
-font-size:10px;
+.price span{
+font-size:11px;
+opacity:.7;
 }
 
-.price-box h2{
-font-size:18px;
+.price h2{
+font-size:20px;
 }
 
-.price-box span{
+.price b{
 background:#fff;
 color:#dc2626;
 padding:5px 10px;
 border-radius:999px;
 font-size:10px;
-font-weight:600;
 }
 
 /* BUTTON */
-.cta{
+.btn{
 position:fixed;
 bottom:10px;
 left:12px;
@@ -157,11 +145,11 @@ height:50px;
 border:none;
 border-radius:14px;
 
-background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+background:linear-gradient(135deg,#2563eb,#60a5fa);
 color:#fff;
 font-weight:600;
 
-box-shadow:0 10px 20px rgba(0,0,0,.3);
+box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
 
 /* POPUP */
@@ -174,16 +162,17 @@ justify-content:center;
 align-items:center;
 }
 
-.popup-box{
+.box{
 background:#fff;
+color:#111;
 padding:20px;
 border-radius:20px;
 text-align:center;
 width:80%;
-max-width:300px;
+max-width:280px;
 }
 
-.check{
+.icon{
 width:60px;
 height:60px;
 background:#22c55e;
@@ -197,12 +186,14 @@ margin:auto;
 margin-bottom:10px;
 }
 
-.popup button{
-width:100%;
-height:40px;
-border:none;
-border-radius:10px;
-background:#111;
-color:#fff;
-margin-top:10px;
+/* ANIMATION */
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
