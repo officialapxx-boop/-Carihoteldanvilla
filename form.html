@@ -3,39 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUXORA | Reservation</title>
+
+<title>LUXORA Premium</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <link rel="stylesheet" href="form.css">
 
 </head>
 <body>
 
-<!-- HEADER MINI -->
+<!-- HEADER -->
 <header class="topbar">
-<a href="index.html" class="back-btn">←</a>
-
-<div class="brand">
-<img src="assets/logo.png">
-<span>LUXORA</span>
-</div>
+<a href="index.html" class="back">←</a>
+<h2>LUXORA</h2>
 </header>
 
-<!-- CARD -->
-<div class="container">
+<!-- CONTENT -->
+<div class="wrapper">
 
 <!-- HOTEL -->
-<div class="hotel-card">
+<div class="hotel">
 <img id="hotelImage">
 
-<div class="hotel-info">
-<h2 id="hotelName">Villa Bandung</h2>
+<div class="overlay"></div>
+
+<div class="hotel-text">
+<h1 id="hotelName">Villa Bandung</h1>
 <p id="hotelLocation">📍 Bandung</p>
 </div>
 </div>
 
 <!-- FORM -->
-<div class="form-box">
+<div class="card">
 
 <h3>Reservation</h3>
 
@@ -60,34 +60,34 @@
 </div>
 
 <!-- PRICE -->
-<div class="price-box">
+<div class="price">
 <div>
-<small>Total</small>
+<span>Total</span>
 <h2 id="hotelPrice">Rp0</h2>
 </div>
 
-<span id="hotelDiscount">50% OFF</span>
+<b id="hotelDiscount">50% OFF</b>
 </div>
 
 </div>
 
 </div>
 
-<!-- BUTTON STICKY -->
-<button class="cta" onclick="submitForm()">
-Konfirmasi Reservasi
+<!-- BUTTON -->
+<button class="btn" onclick="submitForm()">
+Konfirmasi
 </button>
 
 <!-- POPUP -->
 <div class="popup" id="popup">
-<div class="popup-box">
+<div class="box">
 
-<div class="check">✓</div>
+<div class="icon">✓</div>
 
 <h3>Berhasil</h3>
-<p>Reservasi berhasil dikirim</p>
+<p>Reservasi dikirim</p>
 
-<button onclick="closePopup()">Selesai</button>
+<button onclick="closePopup()">OK</button>
 
 </div>
 </div>
