@@ -143,7 +143,7 @@ Saya ingin booking:
 
 Terima kasih 🙏`;
 
-let url = `https://wa.me/6281234567890?text=${encodeURIComponent(pesan)}`;
+let url = `https://wa.me/6283125043684?text=${encodeURIComponent(pesan)}`;
 
 window.open(url,"_blank");
 }
