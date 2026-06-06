@@ -1,6 +1,3 @@
-/* LOAD */
-window.onload = function(){
-
 document.getElementById("hotelName").innerText = data.name;
 document.getElementById("hotelLocation").innerText = data.location;
 document.getElementById("hotelPrice").innerText = "Rp " + data.price.toLocaleString("id-ID");
