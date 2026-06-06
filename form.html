@@ -1,120 +1,101 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LUXORA PRO</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="form.css">
+<title>Form Booking</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
-
 <body>
-
-<header class="topbar">
-<a href="#" class="back">←</a>
-
-<div class="brand">
-<img src="https://cdn-icons-png.flaticon.com/512/190/190411.png">
-<span>LUXORA</span>
-</div>
-</header>
-
-<div class="progress">
-<div class="bar" id="bar"></div>
-</div>
 
 <div class="container">
 
-<!-- CARD -->
-<div class="hotel">
+<!-- INFO HOTEL -->
+<div class="hotel-box">
+
 <img id="hotelImage">
 
-<div class="overlay"></div>
+<h2 id="hotelName"></h2>
+<p id="hotelLocation"></p>
 
-<div class="hotelText">
-<h3 id="hotelName">Villa Bandung</h3>
+<div id="hotelPrice"></div>
 
-<div class="info">
-⭐ 4.9 • 120 review <br>
-📍 Bandung, Indonesia <br>
-🔥 Best Choice
-</div>
-</div>
+<div id="facilities"></div>
 
 </div>
+
+<!-- FORM -->
+<div class="form-box">
 
 <!-- STEP 1 -->
 <div class="step active">
+
 <h3>Data Diri</h3>
 
-<input placeholder="Nama lengkap">
-<input placeholder="Nomor HP">
-<input placeholder="Email">
+<input type="text" placeholder="Nama lengkap" required>
+
+<input type="tel"
+inputmode="numeric"
+pattern="[0-9]*"
+placeholder="Nomor HP"
+required>
+
+<input type="email"
+placeholder="Email"
+required>
 
 <button onclick="next()">Lanjut</button>
-
-<div class="trust">
-✔ Aman & terpercaya <br>
-✔ Respon < 1 jam <br>
-✔ 1000+ booking sukses
-</div>
 
 </div>
 
 <!-- STEP 2 -->
 <div class="step">
-<h3>Detail Booking</h3>
 
-<div class="row">
-<input type="date">
-<input type="date">
+<h3>Tanggal Booking</h3>
+
+<label>Check-in</label>
+<input type="date" required>
+
+<label>Check-out</label>
+<input type="date" required>
+
+<div class="total-box">
+Total Harga:
+<strong id="totalHarga">-</strong>
 </div>
 
-<input placeholder="Jumlah tamu">
-<textarea placeholder="Permintaan tambahan"></textarea>
-
-<div class="nav">
 <button onclick="prev()">Kembali</button>
 <button onclick="next()">Lanjut</button>
-</div>
+
 </div>
 
 <!-- STEP 3 -->
 <div class="step">
-<h3>Konfirmasi</h3>
 
-<div class="price">
-<h2 id="hotelPrice">Rp2.500.000</h2>
-<span id="hotelDiscount">50% OFF</span>
-</div>
+<h3>Detail Tambahan</h3>
 
-<button onclick="submitForm()">Konfirmasi Reservasi</button>
-</div>
+<input type="number"
+inputmode="numeric"
+placeholder="Jumlah tamu"
+min="1"
+required>
 
-</div>
+<textarea placeholder="Permintaan tambahan"></textarea>
 
-<!-- POPUP -->
-<div class="popup" id="popup">
-<div class="box">
-
-<div class="icon">✓</div>
-
-<h3>Reservasi Berhasil</h3>
-
-<p class="desc">
-Reservasi berhasil! Admin Luxora akan menghubungi Anda dalam waktu kurang dari 1 jam.
-</p>
-
-<div class="contact">
-📞 Admin Resmi: <b>082276975906</b>
-</div>
-
-<button onclick="closePopup()">Selesai</button>
+<button onclick="prev()">Kembali</button>
+<button onclick="submitForm()">Kirim</button>
 
 </div>
+
 </div>
 
-<script src="form.js" defer></script>
+</div>
+
+<script src="form.js"></script>
+
 </body>
 </html>
