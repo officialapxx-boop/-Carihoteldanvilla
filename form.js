@@ -1,14 +1,3 @@
-/* ========================= */
-/* DATA HOTEL (FIX TIDAK RANDOM) */
-/* ========================= */
-const data = {
-name: "Hotel Luxora",
-location: "Jakarta",
-price: 350000,
-image: "https://picsum.photos/400/200",
-facilities: ["WiFi","AC","Kolam Renang"]
-};
-
 /* LOAD */
 window.onload = function(){
 
