@@ -4,52 +4,38 @@
 const params = new URLSearchParams(window.location.search);
 
 const data = {
-name: params.get("name") || "-",
-location: params.get("location") || "-",
-price: params.get("price") || "-",
-oldprice: params.get("oldprice") || "-",
-discount: params.get("discount") || "-",
-rating: params.get("rating") || "-",
-reviews: params.get("reviews") || "-",
-image: params.get("image") || "",
-facilities: params.get("facilities") || "-"
+name: params.get("name"),
+location: params.get("location"),
+price: params.get("price"),
+image: params.get("image"),
+facilities: params.get("facilities"),
+rating: params.get("rating")
 };
 
 /* ========================= */
-/* LOAD DATA KE UI */
+/* LOAD UI */
 /* ========================= */
-window.addEventListener("DOMContentLoaded", () => {
+window.onload = function(){
 
-if(document.getElementById("hotelName")){
 document.getElementById("hotelName").innerText = data.name;
-}
-
-if(document.getElementById("hotelPrice")){
-document.getElementById("hotelPrice").innerText = data.price;
-}
-
-if(document.getElementById("hotelImage")){
-document.getElementById("hotelImage").src = data.image;
-}
-
-if(document.getElementById("hotelLocation")){
 document.getElementById("hotelLocation").innerText = data.location;
-}
+document.getElementById("hotelPrice").innerText = data.price;
+document.getElementById("hotelImage").src = data.image;
 
-/* RENDER FASILITAS */
-if(document.getElementById("facilities") && data.facilities){
+/* fasilitas */
+if(data.facilities){
 let list = data.facilities.split(",");
-let container = document.getElementById("facilities");
+let el = document.getElementById("facilities");
 
-list.forEach(item => {
+list.forEach(f=>{
 let span = document.createElement("span");
+span.innerText = f;
 span.className = "tag";
-span.innerText = item.trim();
-container.appendChild(span);
+el.appendChild(span);
 });
 }
 
-});
+};
 
 /* ========================= */
 /* STEP FORM */
@@ -58,143 +44,140 @@ const steps = document.querySelectorAll(".step");
 let current = 0;
 
 function showStep(){
-steps.forEach(s => s.classList.remove("active"));
+steps.forEach(s=>s.classList.remove("active"));
 steps[current].classList.add("active");
+}
 
-document.getElementById("bar").style.width =
-((current+1)/steps.length)*100 + "%";
+function validEmail(email){
+return email.includes("@") && email.includes(".com");
 }
 
 function next(){
-if(current < steps.length-1){
+
+let inputs = steps[current].querySelectorAll("input, textarea");
+
+for(let input of inputs){
+
+if(!input.value){
+alert("Semua harus diisi 😅");
+return;
+}
+
+if(input.type === "email" && !validEmail(input.value)){
+alert("Email tidak valid!");
+return;
+}
+
+}
+
 current++;
 showStep();
 }
-}
 
 function prev(){
-if(current > 0){
 current--;
 showStep();
 }
-}
 
 /* ========================= */
-/* FORMAT TANGGAL */
+/* HITUNG TOTAL */
 /* ========================= */
-function formatTanggal(tgl){
-if(!tgl) return "-";
-let d = new Date(tgl);
-return d.toLocaleDateString("id-ID", {
-day: 'numeric',
-month: 'long',
-year: 'numeric'
+function parseHarga(h){
+return parseInt(h.replace(/[^0-9]/g,'')) || 0;
+}
+
+function hitungTotal(){
+
+let tgl = document.querySelectorAll("input[type='date']");
+
+if(!tgl[0].value || !tgl[1].value) return;
+
+let inDate = new Date(tgl[0].value);
+let outDate = new Date(tgl[1].value);
+
+let malam = (outDate - inDate)/(1000*60*60*24);
+
+if(malam <= 0){
+document.getElementById("totalHarga").innerText = "Tanggal tidak valid";
+return;
+}
+
+let harga = parseHarga(data.price);
+let total = harga * malam;
+
+document.getElementById("totalHarga").innerText =
+"Rp" + total.toLocaleString("id-ID") + ` (${malam} malam)`;
+
+}
+
+/* auto hitung */
+document.addEventListener("change", e=>{
+if(e.target.type === "date"){
+hitungTotal();
+}
 });
-}
 
 /* ========================= */
-/* SUBMIT KE WHATSAPP */
+/* SUBMIT WA */
 /* ========================= */
+function formatTanggal(t){
+let d = new Date(t);
+return d.toLocaleDateString("id-ID",{day:'numeric',month:'long',year:'numeric'});
+}
+
 function submitForm(){
 
 let nama = document.querySelector("input[placeholder='Nama lengkap']").value;
 let hp = document.querySelector("input[placeholder='Nomor HP']").value;
 let email = document.querySelector("input[placeholder='Email']").value;
 
-let tanggal = document.querySelectorAll("input[type='date']");
-let checkin = formatTanggal(tanggal[0].value);
-let checkout = formatTanggal(tanggal[1].value);
+let tgl = document.querySelectorAll("input[type='date']");
+let checkin = formatTanggal(tgl[0].value);
+let checkout = formatTanggal(tgl[1].value);
 
 let tamu = document.querySelector("input[placeholder='Jumlah tamu']").value;
-let request = document.querySelector("textarea").value;
+let req = document.querySelector("textarea").value;
 
-/* AMBIL DARI DATA INDEX */
-let hotel = data.name;
-let harga = data.price;
-let lokasi = data.location;
-let rating = data.rating;
-let fasilitas = data.facilities;
-
-/* VALIDASI */
-if(!nama || !hp || checkin === "-" || checkout === "-"){
-alert("Lengkapi data dulu bro 😅");
+/* VALIDASI FINAL */
+if(!nama || !hp || !email || !tamu){
+alert("Lengkapi semua data!");
 return;
 }
 
-/* FORMAT PESAN */
+if(!validEmail(email)){
+alert("Email tidak valid!");
+return;
+}
+
+let totalText = document.getElementById("totalHarga").innerText;
+
+/* PESAN */
 let pesan = `Halo Admin Luxora 👋
 
-Saya ingin melakukan reservasi dengan detail berikut:
+Saya ingin booking:
 
-🏨 Hotel: ${hotel}
-📍 Lokasi: ${lokasi}
-⭐ Rating: ${rating}
+🏨 ${data.name}
+📍 ${data.location}
+⭐ ${data.rating}
 
-💰 Harga: ${harga}
+📅 ${checkin} - ${checkout}
 
-📅 Check-in: ${checkin}
-📅 Check-out: ${checkout}
+👤 ${nama}
+📞 ${hp}
+📧 ${email}
 
-👤 Nama: ${nama}
-📞 No HP: ${hp}
-📧 Email: ${email}
+👥 ${tamu} tamu
 
-👥 Jumlah Tamu: ${tamu || '-'}
+💰 ${totalText}
 
-🏷️ Fasilitas:
-${fasilitas}
+📝 ${req || '-'}
 
-📝 Permintaan Tambahan:
-${request || '-'}
+Mohon konfirmasi 🙏`;
 
-Mohon konfirmasi ketersediaan 🙏`;
+let url =
+`https://wa.me/6282276975906?text=${encodeURIComponent(pesan)}`;
 
-/* NOMOR ADMIN */
-let nomor = "6282276975906";
+window.open(url,"_blank");
 
-/* OPEN WHATSAPP */
-let url = `https://wa.me/${nomor}?text=${encodeURIComponent(pesan)}`;
-window.open(url, "_blank");
-
-/* POPUP */
-document.getElementById("popup").style.display="flex";
+alert("Berhasil dikirim ke WhatsApp!");
 }
-
-/* ========================= */
-/* CLOSE POPUP */
-/* ========================= */
-function closePopup(){
-window.location.href="index.html";
-}
-
-/* ========================= */
-/* FOMO NOTIFICATION 😈 */
-/* ========================= */
-const names = [
-"Rizky","Andi","Budi","Salsa","Dina",
-"Rina","Fajar","Yoga","Putri","Aldi"
-];
-
-function showFomo(){
-
-let notif = document.createElement("div");
-notif.className = "fomo";
-
-let randomName = names[Math.floor(Math.random()*names.length)];
-
-notif.innerText = `${randomName} baru saja booking ${data.name} 🔥`;
-
-document.body.appendChild(notif);
-
-setTimeout(()=>{
-notif.classList.add("show");
-},100);
-
-setTimeout(()=>{
-notif.classList.remove("show");
-setTimeout(()=>notif.remove(),500);
-},4000);
-}
-
-/* AUTO LOOP FOMO */
-setInterval(showFomo, 7000);
