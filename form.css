@@ -254,4 +254,81 @@ to{
 opacity:1;
 transform:translateY(0);
 }
+
+/* ========================= */
+/* FIX INPUT KHUSUS */
+/* ========================= */
+
+/* biar date & number normal */
+input[type="date"],
+input[type="number"],
+input[type="tel"]{
+background: rgba(255,255,255,0.2);
+color: #fff;
+}
+
+/* date icon biar keliatan */
+input[type="date"]::-webkit-calendar-picker-indicator{
+filter: invert(1);
+}
+
+/* placeholder biar keliatan */
+input::placeholder,
+textarea::placeholder{
+color: rgba(255,255,255,0.7);
+}
+
+/* ========================= */
+/* ROW FIX */
+/* ========================= */
+.row{
+display:flex;
+gap:10px;
+}
+
+.row input{
+flex:1;
+}
+
+/* ========================= */
+/* TOTAL HARGA */
+/* ========================= */
+.total-box{
+margin-top:10px;
+padding:12px;
+border-radius:12px;
+background:rgba(0,0,0,0.4);
+text-align:center;
+font-weight:600;
+font-size:14px;
+}
+
+#totalHarga{
+display:block;
+font-size:18px;
+margin-top:5px;
+color:#4facfe;
+}
+
+/* ========================= */
+/* BUTTON NAV */
+/* ========================= */
+.nav{
+display:flex;
+gap:10px;
+}
+
+.nav button{
+flex:1;
+}
+
+/* ========================= */
+/* RESPONSIVE HP */
+/* ========================= */
+@media(max-width:500px){
+
+.row{
+flex-direction:column;
+}
+
 }
