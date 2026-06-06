@@ -1,39 +1,30 @@
 /* ========================= */
-/* AMBIL DATA DARI INDEX */
+/* DATA HOTEL (FIX TIDAK RANDOM) */
 /* ========================= */
-const params = new URLSearchParams(window.location.search);
-
 const data = {
-name: params.get("name"),
-location: params.get("location"),
-price: params.get("price"),
-image: params.get("image"),
-facilities: params.get("facilities"),
-rating: params.get("rating")
+name: "Hotel Luxora",
+location: "Jakarta",
+price: 350000,
+image: "https://picsum.photos/400/200",
+facilities: ["WiFi","AC","Kolam Renang"]
 };
 
-/* ========================= */
-/* LOAD UI */
-/* ========================= */
+/* LOAD */
 window.onload = function(){
 
 document.getElementById("hotelName").innerText = data.name;
 document.getElementById("hotelLocation").innerText = data.location;
-document.getElementById("hotelPrice").innerText = data.price;
+document.getElementById("hotelPrice").innerText = "Rp " + data.price.toLocaleString("id-ID");
 document.getElementById("hotelImage").src = data.image;
 
-/* fasilitas */
-if(data.facilities){
-let list = data.facilities.split(",");
 let el = document.getElementById("facilities");
 
-list.forEach(f=>{
+data.facilities.forEach(f=>{
 let span = document.createElement("span");
-span.innerText = f;
 span.className = "tag";
+span.innerText = f;
 el.appendChild(span);
 });
-}
 
 };
 
@@ -49,22 +40,22 @@ steps[current].classList.add("active");
 }
 
 function validEmail(email){
-return email.includes("@") && email.includes(".com");
+return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 function next(){
 
-let inputs = steps[current].querySelectorAll("input, textarea");
+let inputs = steps[current].querySelectorAll("input");
 
 for(let input of inputs){
 
-if(!input.value){
-alert("Semua harus diisi 😅");
+if(input.hasAttribute("required") && !input.value){
+alert("Semua harus diisi!");
 return;
 }
 
 if(input.type === "email" && !validEmail(input.value)){
-alert("Email tidak valid!");
+alert("Email harus ada @ dan .com");
 return;
 }
 
@@ -80,45 +71,43 @@ showStep();
 }
 
 /* ========================= */
+/* BLOK ANGKA */
+/* ========================= */
+document.addEventListener("input", function(e){
+if(e.target.id === "hp" || e.target.id === "tamu"){
+e.target.value = e.target.value.replace(/[^0-9]/g,'');
+}
+});
+
+/* ========================= */
 /* HITUNG TOTAL */
 /* ========================= */
-function parseHarga(h){
-return parseInt(h.replace(/[^0-9]/g,'')) || 0;
-}
-
 function hitungTotal(){
 
-let tgl = document.querySelectorAll("input[type='date']");
+let checkin = new Date(document.getElementById("checkin").value);
+let checkout = new Date(document.getElementById("checkout").value);
 
-if(!tgl[0].value || !tgl[1].value) return;
+if(!checkin || !checkout) return;
 
-let inDate = new Date(tgl[0].value);
-let outDate = new Date(tgl[1].value);
-
-let malam = (outDate - inDate)/(1000*60*60*24);
+let malam = (checkout - checkin)/(1000*60*60*24);
 
 if(malam <= 0){
 document.getElementById("totalHarga").innerText = "Tanggal tidak valid";
 return;
 }
 
-let harga = parseHarga(data.price);
-let total = harga * malam;
+let total = data.price * malam;
 
 document.getElementById("totalHarga").innerText =
-"Rp" + total.toLocaleString("id-ID") + ` (${malam} malam)`;
+"Rp " + total.toLocaleString("id-ID") + ` (${malam} malam)`;
 
 }
 
-/* auto hitung */
-document.addEventListener("change", e=>{
-if(e.target.type === "date"){
-hitungTotal();
-}
-});
+document.getElementById("checkin").addEventListener("change", hitungTotal);
+document.getElementById("checkout").addEventListener("change", hitungTotal);
 
 /* ========================= */
-/* SUBMIT WA */
+/* SUBMIT */
 /* ========================= */
 function formatTanggal(t){
 let d = new Date(t);
@@ -127,20 +116,16 @@ return d.toLocaleDateString("id-ID",{day:'numeric',month:'long',year:'numeric'})
 
 function submitForm(){
 
-let nama = document.querySelector("input[placeholder='Nama lengkap']").value;
-let hp = document.querySelector("input[placeholder='Nomor HP']").value;
-let email = document.querySelector("input[placeholder='Email']").value;
+let nama = document.getElementById("nama").value;
+let hp = document.getElementById("hp").value;
+let email = document.getElementById("email").value;
+let tamu = document.getElementById("tamu").value;
 
-let tgl = document.querySelectorAll("input[type='date']");
-let checkin = formatTanggal(tgl[0].value);
-let checkout = formatTanggal(tgl[1].value);
+let checkin = document.getElementById("checkin").value;
+let checkout = document.getElementById("checkout").value;
 
-let tamu = document.querySelector("input[placeholder='Jumlah tamu']").value;
-let req = document.querySelector("textarea").value;
-
-/* VALIDASI FINAL */
-if(!nama || !hp || !email || !tamu){
-alert("Lengkapi semua data!");
+if(!nama || !hp || !email || !tamu || !checkin || !checkout){
+alert("Semua harus diisi!");
 return;
 }
 
@@ -151,33 +136,25 @@ return;
 
 let totalText = document.getElementById("totalHarga").innerText;
 
-/* PESAN */
-let pesan = `Halo Admin Luxora 👋
+let pesan = `Halo Admin 👋
 
 Saya ingin booking:
 
 🏨 ${data.name}
 📍 ${data.location}
-⭐ ${data.rating}
 
-📅 ${checkin} - ${checkout}
+📅 ${formatTanggal(checkin)} - ${formatTanggal(checkout)}
 
 👤 ${nama}
 📞 ${hp}
 📧 ${email}
 
 👥 ${tamu} tamu
-
 💰 ${totalText}
 
-📝 ${req || '-'}
+Terima kasih 🙏`;
 
-Mohon konfirmasi 🙏`;
-
-let url =
-`https://wa.me/6282276975906?text=${encodeURIComponent(pesan)}`;
+let url = `https://wa.me/6281234567890?text=${encodeURIComponent(pesan)}`;
 
 window.open(url,"_blank");
-
-alert("Berhasil dikirim ke WhatsApp!");
 }
