@@ -1,56 +1,28 @@
-// form.js
-
-// AMBIL PARAMETER URL
 const params = new URLSearchParams(window.location.search);
 
-// DATA HOTEL
-const hotelName = params.get("name");
-const hotelLocation = params.get("location");
-const hotelPrice = params.get("price");
-const hotelImage = params.get("image");
-const hotelOldPrice = params.get("oldprice");
-const hotelDiscount = params.get("discount");
-
-// TAMPILKAN DATA
 document.getElementById("hotelName").innerText =
-hotelName || "Luxury Resort";
+params.get("name") || "Luxury Villa";
 
 document.getElementById("hotelLocation").innerText =
-"📍 " + (hotelLocation || "Indonesia");
+"📍 " + (params.get("location") || "Indonesia");
 
 document.getElementById("hotelPrice").innerText =
-hotelPrice || "Rp0";
-
-document.getElementById("hotelOldPrice").innerText =
-hotelOldPrice || "Rp0";
+params.get("price") || "Rp2.500.000";
 
 document.getElementById("hotelDiscount").innerText =
-hotelDiscount || "50% OFF";
+params.get("discount") || "50% OFF";
 
 document.getElementById("hotelImage").src =
-hotelImage ||
-"https://images.unsplash.com/photo-1522798514-97ceb8c4f1c?q=80&w=1400&auto=format&fit=crop";
+params.get("image") ||
+"https://images.unsplash.com/photo-1522798514-97ceb8c4f1c?q=80&w=1400";
 
-// SUBMIT
-
+/* SUBMIT */
 function submitForm(){
-
-document.getElementById("popup")
-.style.display = "flex";
-
-document.body.style.overflow = "hidden";
-
+document.getElementById("popup").style.display="flex";
 }
 
-// CLOSE
-
+/* CLOSE */
 function closePopup(){
-
-document.getElementById("popup")
-.style.display = "none";
-
-document.body.style.overflow = "auto";
-
-window.location.href = "index.html";
-
+document.getElementById("popup").style.display="none";
+window.location.href="index.html";
 }
