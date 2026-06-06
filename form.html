@@ -1,28 +1,35 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Booking Hotel</title>
 
-<title>Form Booking</title>
-
-<link rel="stylesheet" href="form.css">
-
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
 
-<!-- INFO HOTEL -->
+<!-- HOTEL -->
 <div class="hotel-box">
 
 <img id="hotelImage">
 
-<h2 id="hotelName"></h2>
-<p id="hotelLocation"></p>
+<div class="hotel-info">
 
-<div id="hotelPrice"></div>
+<div class="hotel-header">
+<div class="hotel-name" id="hotelName"></div>
+<div class="rating">4.5 ⭐</div>
+</div>
+
+<div class="location" id="hotelLocation"></div>
+
+<div class="hotel-footer">
+<div class="price" id="hotelPrice"></div>
+</div>
+
+</div>
 
 <div id="facilities"></div>
 
@@ -31,71 +38,47 @@
 <!-- FORM -->
 <div class="form-box">
 
-<!-- STEP 1 -->
 <div class="step active">
-
 <h3>Data Diri</h3>
 
-<input type="text" placeholder="Nama lengkap" required>
-
-<input type="tel"
-inputmode="numeric"
-pattern="[0-9]*"
-placeholder="Nomor HP"
-required>
-
-<input type="email"
-placeholder="Email"
-required>
+<input type="text" id="nama" placeholder="Nama lengkap" required>
+<input type="tel" id="hp" placeholder="Nomor HP" required>
+<input type="email" id="email" placeholder="Email" required>
 
 <button onclick="next()">Lanjut</button>
-
 </div>
 
-<!-- STEP 2 -->
 <div class="step">
-
 <h3>Tanggal Booking</h3>
 
-<label>Check-in</label>
-<input type="date" required>
-
-<label>Check-out</label>
-<input type="date" required>
+<input type="date" id="checkin">
+<input type="date" id="checkout">
 
 <div class="total-box">
-Total Harga:
 <strong id="totalHarga">-</strong>
 </div>
 
+<div class="nav">
 <button onclick="prev()">Kembali</button>
 <button onclick="next()">Lanjut</button>
-
+</div>
 </div>
 
-<!-- STEP 3 -->
 <div class="step">
+<h3>Detail</h3>
 
-<h3>Detail Tambahan</h3>
+<input type="number" id="tamu" placeholder="Jumlah tamu" min="1">
+<textarea id="req"></textarea>
 
-<input type="number"
-inputmode="numeric"
-placeholder="Jumlah tamu"
-min="1"
-required>
-
-<textarea placeholder="Permintaan tambahan"></textarea>
-
+<div class="nav">
 <button onclick="prev()">Kembali</button>
 <button onclick="submitForm()">Kirim</button>
-
+</div>
 </div>
 
 </div>
-
 </div>
 
-<script src="form.js"></script>
-
+<script src="script.js"></script>
 </body>
 </html>
