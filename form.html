@@ -1,101 +1,101 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXORA PRO</title>
 
-<title>Form Booking</title>
-
-<link rel="stylesheet" href="form.css">
-
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+<header class="topbar">
+<a href="index.html" class="back">←</a>
+
+<div class="brand">
+<img src="https://cdn-icons-png.flaticon.com/512/190/190411.png">
+<span>LUXORA</span>
+</div>
+</header>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
 
 <div class="container">
 
-<!-- INFO HOTEL -->
-<div class="hotel-box">
-
+<div class="hotel">
 <img id="hotelImage">
-
-<h2 id="hotelName"></h2>
-<p id="hotelLocation"></p>
-
-<div id="hotelPrice"></div>
-
-<div id="facilities"></div>
-
+<div class="overlay"></div>
+<h3 id="hotelName">Villa</h3>
 </div>
-
-<!-- FORM -->
-<div class="form-box">
 
 <!-- STEP 1 -->
 <div class="step active">
-
 <h3>Data Diri</h3>
 
-<input type="text" placeholder="Nama lengkap" required>
-
-<input type="tel"
-inputmode="numeric"
-pattern="[0-9]*"
-placeholder="Nomor HP"
-required>
-
-<input type="email"
-placeholder="Email"
-required>
+<input placeholder="Nama lengkap">
+<input placeholder="Nomor HP">
+<input placeholder="Email">
 
 <button onclick="next()">Lanjut</button>
-
 </div>
 
 <!-- STEP 2 -->
 <div class="step">
+<h3>Detail Booking</h3>
 
-<h3>Tanggal Booking</h3>
-
-<label>Check-in</label>
-<input type="date" required>
-
-<label>Check-out</label>
-<input type="date" required>
-
-<div class="total-box">
-Total Harga:
-<strong id="totalHarga">-</strong>
+<div class="row">
+<input type="date">
+<input type="date">
 </div>
 
+<input placeholder="Jumlah tamu">
+<textarea placeholder="Permintaan tambahan"></textarea>
+
+<div class="nav">
 <button onclick="prev()">Kembali</button>
 <button onclick="next()">Lanjut</button>
-
+</div>
 </div>
 
 <!-- STEP 3 -->
 <div class="step">
+<h3>Konfirmasi</h3>
 
-<h3>Detail Tambahan</h3>
+<div class="price">
+<h2 id="hotelPrice">Rp0</h2>
+<span id="hotelDiscount">50% OFF</span>
+</div>
 
-<input type="number"
-inputmode="numeric"
-placeholder="Jumlah tamu"
-min="1"
-required>
-
-<textarea placeholder="Permintaan tambahan"></textarea>
-
-<button onclick="prev()">Kembali</button>
-<button onclick="submitForm()">Kirim</button>
-
+<button onclick="submitForm()">Konfirmasi Reservasi</button>
 </div>
 
 </div>
 
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="box">
+
+<div class="icon">✓</div>
+
+<h3>Reservasi Berhasil</h3>
+
+<p class="desc">
+Reservasi berhasil! Admin Luxora akan menghubungi Anda dalam waktu kurang dari 1 jam.
+</p>
+
+<div class="contact">
+📞 Admin Resmi: <b>082276975906</b>
 </div>
 
-<script src="form.js"></script>
+<button onclick="closePopup()">Selesai</button>
 
+</div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
