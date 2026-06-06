@@ -1,10 +1,33 @@
+const steps = document.querySelectorAll(".step");
+let current = 0;
+
+function showStep(){
+steps.forEach(s => s.classList.remove("active"));
+steps[current].classList.add("active");
+
+document.getElementById("bar").style.width =
+((current+1)/steps.length)*100 + "%";
+}
+
+function next(){
+if(current < steps.length-1){
+current++;
+showStep();
+}
+}
+
+function prev(){
+if(current > 0){
+current--;
+showStep();
+}
+}
+
+/* DATA HOTEL */
 const p = new URLSearchParams(window.location.search);
 
 document.getElementById("hotelName").innerText =
 p.get("name") || "Luxury Villa";
-
-document.getElementById("hotelLocation").innerText =
-"📍 " + (p.get("location") || "Indonesia");
 
 document.getElementById("hotelPrice").innerText =
 p.get("price") || "Rp2.500.000";
@@ -23,6 +46,5 @@ document.getElementById("popup").style.display="flex";
 
 /* CLOSE */
 function closePopup(){
-document.getElementById("popup").style.display="none";
 window.location.href="index.html";
 }
