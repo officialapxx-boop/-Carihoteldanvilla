@@ -1,78 +1,45 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>LUXORA | Hotel & Villa</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 
 <!-- HERO -->
-
 <section class="hero">
 
 <div class="overlay-dark"></div>
 
 <div class="luxora-brand">
-
-<img src="assets/logo.png"
-class="luxora-logo">
-
+<img src="assets/logo.png" class="luxora-logo">
 <div>
-
 <h2>LUXORA</h2>
-
 <p>Luxury Hotel Collection</p>
-
 </div>
-
 </div>
 
 <div class="hero-content">
-
-<h1>
-Luxury Hotel & Villa Experience
-</h1>
-
-<p>
-Nikmati pengalaman menginap premium
-dengan hotel dan villa terbaik di Indonesia.
-</p>
+<h1>Luxury Hotel & Villa Experience</h1>
+<p>Nikmati pengalaman menginap premium dengan hotel dan villa terbaik di Indonesia.</p>
 
 <div class="luxury-badge">
-
-<div class="badge-item">
-✨ Premium
+<div class="badge-item">✨ Premium</div>
+<div class="badge-item">🏨 Hotel</div>
+<div class="badge-item">🏡 Villa</div>
 </div>
-
-<div class="badge-item">
-🏨 Hotel
-</div>
-
-<div class="badge-item">
-🏡 Villa
-</div>
-
-</div>
-
 </div>
 
 </section>
 
 <!-- SEARCH -->
-
 <section class="search-wrapper">
 
 <div class="search-box">
@@ -82,18 +49,11 @@ Cari Hotel / Villa
 </div>
 
 <div class="input-group">
-
-<label>Lokasi</label>
-
-<input type="text"
-id="searchInput"
-class="input"
-placeholder="Contoh: Bali">
-
+<label>Lokasi / Nama</label>
+<input type="text" id="searchInput" class="input" placeholder="Contoh: Bali / Villa">
 </div>
 
-<button class="search-btn"
-onclick="searchHotel()">
+<button class="search-btn" onclick="searchHotel()">
 Cari Sekarang
 </button>
 
@@ -102,53 +62,35 @@ Cari Sekarang
 </section>
 
 <!-- HOTEL -->
-
 <section class="section">
 
 <div class="section-header">
-
 <h2>Rekomendasi Premium</h2>
-
 <span>LUXORA</span>
-
 </div>
 
 <div class="hotel-list">
 
 <!-- HOTEL 1 -->
-
 <div class="hotel-card"
+data-name="gua villa bandung"
 data-location="bandung">
 
 <div class="hotel-image">
 
 <div class="slider">
-
-<img src="assets/guavilla.jpg"
-class="slide active">
-
-<img src="assets/guavilla2.jpg"
-class="slide">
-
-<img src="assets/guavilla3.jpg"
-class="slide">
-
+<img src="assets/guavilla.jpg" class="slide active">
+<img src="assets/guavilla2.jpg" class="slide">
+<img src="assets/guavilla3.jpg" class="slide">
 </div>
 
-<button class="nav prev"
-onclick="changeSlide(this,-1)">
-‹
-</button>
-
-<button class="nav next"
-onclick="changeSlide(this,1)">
-›
-</button>
+<button class="nav prev" onclick="changeSlide(this,-1)">‹</button>
+<button class="nav next" onclick="changeSlide(this,1)">›</button>
 
 <div class="overlay"></div>
 
 <div class="rating">
-⭐ 4.9
+⭐ 4.9 (120 reviews)
 </div>
 
 </div>
@@ -164,56 +106,36 @@ Gua Villa Bandung
 </div>
 
 <div class="features">
-
-<div class="feature">
-Infinity Pool
-</div>
-
-<div class="feature">
-Balkon
-</div>
-
-<div class="feature">
-WiFi
-</div>
-
-<div class="feature">
-Breakfast
-</div>
-
+<div class="feature">Infinity Pool</div>
+<div class="feature">Balkon</div>
+<div class="feature">WiFi</div>
+<div class="feature">Breakfast</div>
 </div>
 
 <div class="bottom">
 
 <div class="price">
-
 <small>Mulai dari</small>
-
-<div class="old-price">
-Rp2.000.000
-</div>
-
+<div class="old-price">Rp2.000.000</div>
 <strong>Rp1.300.000</strong>
-
-<div class="discount-badge">
-35% OFF
-</div>
-
+<div class="discount-badge">35% OFF</div>
 </div>
 
 <button class="book-btn"
-
 onclick="goToForm(
 'Gua Villa Bandung',
 'Bandung, Indonesia',
 'Rp1.300.000',
 'Rp2.000.000',
 '35% OFF',
-'assets/guavilla.jpg'
+'assets/guavilla.jpg',
+'4.9',
+'120',
+'Infinity Pool,Balkon,WiFi,Breakfast',
+'Villa',
+'4'
 )">
-
 Check-in
-
 </button>
 
 </div>
@@ -223,39 +145,25 @@ Check-in
 </div>
 
 <!-- HOTEL 2 -->
-
 <div class="hotel-card"
+data-name="ocean paradise resort"
 data-location="bali">
 
 <div class="hotel-image">
 
 <div class="slider">
-
-<img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1400&auto=format&fit=crop"
-class="slide active">
-
-<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop"
-class="slide">
-
-<img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1400&auto=format&fit=crop"
-class="slide">
-
+<img src="https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1400&auto=format&fit=crop" class="slide active">
+<img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=1400&auto=format&fit=crop" class="slide">
+<img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1400&auto=format&fit=crop" class="slide">
 </div>
 
-<button class="nav prev"
-onclick="changeSlide(this,-1)">
-‹
-</button>
-
-<button class="nav next"
-onclick="changeSlide(this,1)">
-›
-</button>
+<button class="nav prev" onclick="changeSlide(this,-1)">‹</button>
+<button class="nav next" onclick="changeSlide(this,1)">›</button>
 
 <div class="overlay"></div>
 
 <div class="rating">
-⭐ 4.8
+⭐ 4.8 (95 reviews)
 </div>
 
 </div>
@@ -271,56 +179,36 @@ Ocean Paradise Resort
 </div>
 
 <div class="features">
-
-<div class="feature">
-Private Beach
-</div>
-
-<div class="feature">
-Restaurant
-</div>
-
-<div class="feature">
-Bar
-</div>
-
-<div class="feature">
-Gym
-</div>
-
+<div class="feature">Private Beach</div>
+<div class="feature">Restaurant</div>
+<div class="feature">Bar</div>
+<div class="feature">Gym</div>
 </div>
 
 <div class="bottom">
 
 <div class="price">
-
 <small>Mulai dari</small>
-
-<div class="old-price">
-Rp3.5JT
-</div>
-
+<div class="old-price">Rp3.5JT</div>
 <strong>Rp1.8JT</strong>
-
-<div class="discount-badge">
-50% OFF
-</div>
-
+<div class="discount-badge">50% OFF</div>
 </div>
 
 <button class="book-btn"
-
 onclick="goToForm(
 'Ocean Paradise Resort',
 'Bali, Indonesia',
 'Rp1.8JT',
 'Rp3.5JT',
 '50% OFF',
-'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1400&auto=format&fit=crop'
+'https://images.unsplash.com/photo-1522798514-97ceb8c4f1c8?q=80&w=1400&auto=format&fit=crop',
+'4.8',
+'95',
+'Private Beach,Restaurant,Bar,Gym',
+'Hotel',
+'2'
 )">
-
 Check-in
-
 </button>
 
 </div>
