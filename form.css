@@ -6,15 +6,36 @@ font-family:'Poppins',sans-serif;
 }
 
 body{
-background:linear-gradient(135deg,#0f172a,#2563eb);
+background:linear-gradient(180deg,#0f172a,#1e3a8a,#2563eb);
 color:#fff;
 }
 
 /* HEADER */
 .topbar{
 display:flex;
-gap:10px;
+align-items:center;
+justify-content:space-between;
 padding:16px;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:8px;
+font-weight:600;
+font-size:18px;
+}
+
+.brand img{
+width:28px;
+height:28px;
+filter:drop-shadow(0 0 6px rgba(255,255,255,0.5));
+}
+
+.back{
+text-decoration:none;
+color:white;
+font-size:20px;
 }
 
 /* PROGRESS */
@@ -26,22 +47,24 @@ background:#1e3a8a;
 .bar{
 height:100%;
 width:33%;
-background:#60a5fa;
-transition:.3s;
+background:linear-gradient(90deg,#4facfe,#00f2fe);
+transition:.4s;
 }
 
 /* CONTAINER */
 .container{
 padding:14px;
+margin-top:-40px;
 }
 
 /* HOTEL */
 .hotel{
-height:120px;
-border-radius:16px;
+height:210px;
+border-radius:20px;
 overflow:hidden;
 position:relative;
-margin-bottom:14px;
+margin-bottom:20px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
 .hotel img{
@@ -53,43 +76,62 @@ object-fit:cover;
 .overlay{
 position:absolute;
 inset:0;
-background:rgba(0,0,0,.5);
+background:linear-gradient(to top, rgba(0,0,0,0.7), transparent);
 }
 
 .hotel h3{
 position:absolute;
-bottom:10px;
-left:12px;
+bottom:14px;
+left:14px;
+font-size:18px;
+font-weight:600;
 }
 
 /* STEP */
 .step{
 display:none;
 animation:fade .4s ease;
+background:rgba(255,255,255,0.08);
+padding:16px;
+border-radius:16px;
+backdrop-filter:blur(15px);
+box-shadow:0 8px 25px rgba(0,0,0,0.3);
 }
 
 .step.active{
 display:block;
 }
 
+/* INPUT */
 input,textarea{
 width:100%;
-padding:10px;
+padding:12px;
 border:none;
-border-radius:10px;
-margin-bottom:10px;
-background:#f1f5f9;
-color:#111;
+border-radius:12px;
+margin-bottom:12px;
+background:rgba(255,255,255,0.15);
+color:white;
+backdrop-filter:blur(10px);
+}
+
+input::placeholder,
+textarea::placeholder{
+color:rgba(255,255,255,0.7);
+}
+
+input:focus, textarea:focus{
+outline:none;
+box-shadow:0 0 0 2px #60a5fa;
 }
 
 textarea{
-height:60px;
+height:70px;
 }
 
 /* ROW */
 .row{
 display:flex;
-gap:8px;
+gap:10px;
 }
 
 /* BUTTON */
@@ -98,14 +140,21 @@ width:100%;
 height:45px;
 border:none;
 border-radius:12px;
-background:#2563eb;
+background:linear-gradient(90deg,#4facfe,#00f2fe);
 color:#fff;
-margin-top:6px;
+margin-top:8px;
+font-weight:500;
+box-shadow:0 5px 20px rgba(0,242,254,0.4);
+transition:.2s;
+}
+
+button:active{
+transform:scale(0.97);
 }
 
 .nav{
 display:flex;
-gap:8px;
+gap:10px;
 }
 
 /* PRICE */
@@ -126,7 +175,7 @@ font-size:10px;
 .popup{
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.5);
+background:rgba(0,0,0,.6);
 display:none;
 justify-content:center;
 align-items:center;
@@ -135,9 +184,11 @@ align-items:center;
 .box{
 background:#fff;
 color:#111;
-padding:20px;
+padding:22px;
 border-radius:20px;
 text-align:center;
+width:80%;
+max-width:300px;
 }
 
 .icon{
@@ -151,6 +202,7 @@ align-items:center;
 justify-content:center;
 margin:auto;
 margin-bottom:10px;
+font-size:24px;
 }
 
 /* ANIM */
