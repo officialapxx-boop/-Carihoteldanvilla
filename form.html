@@ -6,24 +6,26 @@
 <title>LUXORA PRO</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="topbar">
-<a href="index.html">←</a>
-<h2>LUXORA</h2>
+<a href="index.html" class="back">←</a>
+
+<div class="brand">
+<img src="https://cdn-icons-png.flaticon.com/512/190/190411.png">
+<span>LUXORA</span>
+</div>
 </header>
 
-<!-- PROGRESS -->
 <div class="progress">
 <div class="bar" id="bar"></div>
 </div>
 
 <div class="container">
 
-<!-- HOTEL -->
 <div class="hotel">
 <img id="hotelImage">
 <div class="overlay"></div>
@@ -57,7 +59,6 @@
 <button onclick="prev()">Kembali</button>
 <button onclick="next()">Lanjut</button>
 </div>
-
 </div>
 
 <!-- STEP 3 -->
@@ -69,10 +70,7 @@
 <span id="hotelDiscount">50% OFF</span>
 </div>
 
-<button class="finish" onclick="submitForm()">
-Konfirmasi Reservasi
-</button>
-
+<button onclick="submitForm()">Konfirmasi Reservasi</button>
 </div>
 
 </div>
@@ -87,6 +85,6 @@ Konfirmasi Reservasi
 </div>
 </div>
 
-<script src="form.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
