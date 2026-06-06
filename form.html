@@ -1,248 +1,95 @@
-<!-- form.html -->
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,
-initial-scale=1.0">
-
-<title>LUXORA | Reservation Form</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUXORA | Reservation</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
 <link rel="stylesheet" href="form.css">
 
 </head>
 <body>
 
-<!-- BACKGROUND -->
-
-<div class="bg-overlay"></div>
-
-<!-- TOPBAR -->
-
+<!-- HEADER MINI -->
 <header class="topbar">
+<a href="index.html" class="back-btn">←</a>
 
-<a href="index.html"
-class="back-btn">
-
-←
-
-</a>
-
-<div class="luxora-brand">
-
-<img src="assets/logo.png"
-class="luxora-logo">
-
-<div>
-
-<h2>LUXORA</h2>
-
-<p>Luxury Hotel & Villa</p>
-
+<div class="brand">
+<img src="assets/logo.png">
+<span>LUXORA</span>
 </div>
-
-</div>
-
 </header>
 
-<!-- FORM SECTION -->
+<!-- CARD -->
+<div class="container">
 
-<section class="form-section">
-
-<div class="form-card">
-
-<!-- HOTEL PREVIEW -->
-
-<div class="hotel-preview">
-
+<!-- HOTEL -->
+<div class="hotel-card">
 <img id="hotelImage">
 
-<div class="hotel-overlay"></div>
-
 <div class="hotel-info">
-
-<span class="hotel-badge">
-Premium Resort
-</span>
-
-<h1 id="hotelName">
-Hotel Name
-</h1>
-
-<p id="hotelLocation">
-📍 Location
-</p>
-
+<h2 id="hotelName">Villa Bandung</h2>
+<p id="hotelLocation">📍 Bandung</p>
+</div>
 </div>
 
-</div>
+<!-- FORM -->
+<div class="form-box">
 
-<!-- CONTENT -->
+<h3>Reservation</h3>
 
-<div class="form-content">
+<div class="form">
 
-<h2>
-Reservation Form
-</h2>
+<input type="text" placeholder="Nama lengkap">
 
-<p class="desc">
-
-Lengkapi data reservasi Anda
-untuk menikmati pengalaman
-menginap premium bersama Luxora.
-
-</p>
-
-<!-- INPUT -->
-
-<div class="input-group">
-
-<label>Nama Lengkap</label>
-
-<input type="text"
-placeholder="Masukkan nama lengkap">
-
+<div class="row">
+<input type="number" placeholder="Nomor HP">
+<input type="number" placeholder="Tamu">
 </div>
 
 <div class="row">
-
-<div class="input-group">
-
-<label>Nomor HP</label>
-
-<input type="number"
-placeholder="08xxxx">
-
-</div>
-
-<div class="input-group">
-
-<label>Jumlah Tamu</label>
-
-<input type="number"
-placeholder="2">
-
-</div>
-
-</div>
-
-<div class="row">
-
-<div class="input-group">
-
-<label>Check-in</label>
-
 <input type="date">
-
-</div>
-
-<div class="input-group">
-
-<label>Check-out</label>
-
 <input type="date">
-
 </div>
 
-</div>
+<input type="email" placeholder="Email">
 
-<div class="input-group">
-
-<label>Email</label>
-
-<input type="email"
-placeholder="email@gmail.com">
-
-</div>
-
-<div class="input-group">
-
-<label>Permintaan Tambahan</label>
-
-<textarea
-placeholder="Contoh: dekor honeymoon, extra bed, dll"></textarea>
+<textarea placeholder="Permintaan tambahan"></textarea>
 
 </div>
 
 <!-- PRICE -->
-
 <div class="price-box">
-
 <div>
+<small>Total</small>
+<h2 id="hotelPrice">Rp0</h2>
+</div>
 
-<small>Total Pembayaran</small>
-
-  <div id="hotelOldPrice"
-    class="old-price">
-    Rp0
-  </div>
-
-<h3 id="hotelPrice">
-Rp0
-</h3>
+<span id="hotelDiscount">50% OFF</span>
+</div>
 
 </div>
 
-<span id="hotelDiscount"
-  class="discount">
-0% OFF
-</span>
-
 </div>
 
-<!-- BUTTON -->
-
-<button class="submit-btn"
-onclick="submitForm()">
-
+<!-- BUTTON STICKY -->
+<button class="cta" onclick="submitForm()">
 Konfirmasi Reservasi
-
 </button>
 
-</div>
-
-</div>
-
-</section>
-
-<!-- SUCCESS POPUP -->
-
-<div class="popup"
-id="popup">
-
+<!-- POPUP -->
+<div class="popup" id="popup">
 <div class="popup-box">
 
-<div class="success-icon">
+<div class="check">✓</div>
 
-✓
+<h3>Berhasil</h3>
+<p>Reservasi berhasil dikirim</p>
 
-</div>
-
-<h2>
-Reservasi Berhasil
-</h2>
-
-<p>
-
-Reservasi Anda berhasil dikirim.
-Silahkan tunggu konfirmasi dari pihak hotel Luxora.
-
-</p>
-
-<button onclick="closePopup()">
-
-Selesai
-
-</button>
+<button onclick="closePopup()">Selesai</button>
 
 </div>
-
 </div>
 
 <script src="form.js"></script>
