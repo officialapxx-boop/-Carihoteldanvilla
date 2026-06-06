@@ -7,70 +7,90 @@
 
 <title>Form Booking</title>
 
-<link rel="stylesheet" href="form.css">
+<link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 
 <div class="container">
 
-<!-- HOTEL -->
-<div class="hotel">
-<img src="https://picsum.photos/500/300" id="hotelImage">
+<!-- INFO HOTEL -->
+<div class="hotel-box">
 
-<div class="overlay"></div>
+<img id="hotelImage">
 
-<div class="hotelText">
-  <h2>Gua Villa Bandung</h2>
-  <p>Bandung, Indonesia</p>
-  <div>Rp1.300.000</div>
-  <div class="info">Infinity Pool • Balkon • WiFi • Breakfast</div>
+<h2 id="hotelName"></h2>
+<p id="hotelLocation"></p>
+
+<div id="hotelPrice"></div>
+
+<div id="facilities"></div>
+
 </div>
-</div>
+
+<!-- FORM -->
+<div class="form-box">
 
 <!-- STEP 1 -->
 <div class="step active">
+
 <h3>Data Diri</h3>
 
-<input type="text" placeholder="Nama lengkap">
-<input type="tel" placeholder="Nomor HP">
-<input type="email" placeholder="Email">
+<input type="text" placeholder="Nama lengkap" required>
+
+<input type="tel"
+inputmode="numeric"
+pattern="[0-9]*"
+placeholder="Nomor HP"
+required>
+
+<input type="email"
+placeholder="Email"
+required>
 
 <button onclick="next()">Lanjut</button>
+
 </div>
 
 <!-- STEP 2 -->
 <div class="step">
+
 <h3>Tanggal Booking</h3>
 
 <label>Check-in</label>
-<input type="date" id="in">
+<input type="date" required>
 
 <label>Check-out</label>
-<input type="date" id="out">
+<input type="date" required>
 
-<div class="price">
+<div class="total-box">
 Total Harga:
-<strong id="total">-</strong>
+<strong id="totalHarga">-</strong>
 </div>
 
-<div class="row">
 <button onclick="prev()">Kembali</button>
 <button onclick="next()">Lanjut</button>
-</div>
+
 </div>
 
 <!-- STEP 3 -->
 <div class="step">
+
 <h3>Detail Tambahan</h3>
 
-<input type="number" placeholder="Jumlah tamu" min="1">
+<input type="number"
+inputmode="numeric"
+placeholder="Jumlah tamu"
+min="1"
+required>
+
 <textarea placeholder="Permintaan tambahan"></textarea>
 
-<div class="row">
 <button onclick="prev()">Kembali</button>
 <button onclick="submitForm()">Kirim</button>
+
 </div>
+
 </div>
 
 </div>
